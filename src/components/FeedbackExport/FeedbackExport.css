@@ -158,6 +158,24 @@ line-height: 1;
       gap: 36px;
    }
 }
+
+@media (max-width: 768px) {
+   .feedback-export {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+   }
+   .export-subtitle {
+      margin-bottom: 32px;
+   }
+   .download-button {
+      margin-top: auto;
+   }
+   .date-picker-container {
+      margin-bottom: 10px;
+   }
+}
+
  
  
  

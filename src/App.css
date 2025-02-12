@@ -29,10 +29,20 @@ html, body {
    overflow-y: auto;
  }
 
- /*@media (max-width: 768px) {
+.show-768 {
+   display: none;
+}
+
+ @media (max-width: 768px) {
+   .show-768 {
+      display: flex;
+   }
+   .hide-768 {
+      display: none;
+   }
    .database-update,
    .feedback-export {
-     height: 100vh;
+     height: calc(100vh - 102px);
    }
- }*/
+ }
  
