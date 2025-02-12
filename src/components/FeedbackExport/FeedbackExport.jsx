@@ -30,7 +30,7 @@ const CustomDateInput = forwardRef(({ value, onClick, placeholder, onClear }, re
           alt="Clear"
           className="clear-icon"
           onClick={(e) => {
-            e.stopPropagation(); // Не открываем календарь при клике на крестик
+            e.stopPropagation();
             onClear();
           }}
         />
@@ -55,35 +55,36 @@ const FeedbackExport = () => {
   const [endDate, setEndDate] = useState(null);
 
   const handleDownload = async () => {
-    if (!startDate || !endDate) {
-      console.error("Обе даты должны быть выбраны");
-      return;
-    }
-    // Кодируем данные для Basic Auth
-    const encodedCredentials = btoa("admin:HmADJuDisELD");
-    try {
-      const response = await api.get('/conversation/export.xlsx', {
-        headers: {
-          Authorization: `Basic ${encodedCredentials}`,
-        },
-        params: {
-          from_date: startDate.toISOString(),
-          to_date: endDate.toISOString(),
-        },
-        responseType: 'blob', // Ожидаем, что сервер вернет файл
-      });
-      // Создаем URL для скачивания файла
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'export.xlsx'); // Можно задать динамическое имя файла
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (error) {
-      console.error("Ошибка при скачивании файла:", error);
-    }
-  };
+   if (!startDate || !endDate) {
+     console.error("Обе даты должны быть выбраны");
+     return;
+   }
+   // Кодируем данные для Basic Auth
+   const encodedCredentials = btoa("admin:HmADJuDisELD");
+   try {
+     const response = await api.get('/conversation/export.xslx', {
+       headers: {
+         Authorization: `Basic ${encodedCredentials}`,
+       },
+       params: {
+         from_date: startDate.toISOString(),
+         to_date: endDate.toISOString(),
+       },
+       responseType: 'blob', // Ожидаем, что сервер вернет файл
+     });
+     // Создаем URL для скачивания файла
+     const url = window.URL.createObjectURL(new Blob([response.data]));
+     const link = document.createElement('a');
+     link.href = url;
+     link.setAttribute('download', 'export.xlsx');
+     document.body.appendChild(link);
+     link.click();
+     document.body.removeChild(link);
+   } catch (error) {
+     console.error("Ошибка при скачивании файла:", error);
+   }
+ };
+ 
 
   return (
     <div className="feedback-export">
@@ -98,7 +99,7 @@ const FeedbackExport = () => {
             onChange={(date) => setStartDate(date)}
             placeholderText={t('feedbackExport.datePlaceholder')}
             dateFormat="dd.MM.yyyy"
-            maxDate={endDate} // Нельзя выбрать дату больше, чем endDate
+            maxDate={endDate}
             customInput={
               <CustomDateInput 
                 onClear={() => setStartDate(null)} 
