@@ -19,4 +19,29 @@
    flex-direction: column;
    gap: 15px;
  }
+
+ @media (max-width: 1024px) {
+   .sidebar {
+      padding: 20px;
+      padding-right: 0;
+      width: 250px;
+   }
+ }
  
+ .mobile-header-content {
+   display: none;
+ }
+ 
+ /* Медиа-запрос для мобильных устройств (например, до 768px) */
+ @media screen and (max-width: 768px) {
+   /* Скрываем обычный Header на мобильных устройствах */
+   .header {
+     display: none;
+   }
+   /* Показываем мобильный блок внутри сайдбара */
+   .mobile-header-content {
+     display: block;
+     margin-top: auto; /* чтобы блок оказался внизу сайдбара */
+     padding: 10px;
+   }
+ }

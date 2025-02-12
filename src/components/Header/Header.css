@@ -92,3 +92,12 @@
    background-color: #D3D3D3;
  }
  
+ @media (max-width: 768px) {
+   .header {
+      padding-right: 0;
+      padding-top: 20px;
+   }
+   .header-top {
+      margin-right: 10px;
+   }
+ }

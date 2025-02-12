@@ -1,5 +1,18 @@
+html, body {
+   height: 100%;
+   overflow: hidden;
+ }
+
+ .database-update,
+ .feedback-export {
+   height: calc(100vh - 100px);
+   overflow-y: auto;
+ }
+ 
+
 .app {
    display: flex;
+   height: 100%;
  }
  
  .main-content {
@@ -7,5 +20,19 @@
    display: flex;
    flex-direction: column;
    background: #EEE;
+   overflow: hidden;
  }
+
+ .database-update,
+ .feedback-export {
+   height: calc(100vh - 139px);
+   overflow-y: auto;
+ }
+
+ /*@media (max-width: 768px) {
+   .database-update,
+   .feedback-export {
+     height: 100vh;
+   }
+ }*/
  
